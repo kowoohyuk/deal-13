@@ -131,47 +131,43 @@ const selectChattingRoomDetail = async (roomId, lastIndex, userId) => {
 // 채팅방 목록 조회, 유저 id (메뉴에서 채팅 목록 보기)
 const selectChattingRoomByUserId = async (userId) => {
   const [result] = await db.query(
-    `
-    SELECT
-      r.id as room_id, 
-      g.thumbnail, 
-      (
-        SELECT IF(r2.buyer_id = '${userId}', r2.seller_id, r2.buyer_id)
-        FROM chatting_room r2
-        WHERE r2.id = r.id
-      ) AS partner_id,
-      (
-    SELECT count(distinct m2.id)
-        FROM chatting_message m2
-        WHERE m2.id > IF(r.seller_id = '${userId}', r.seller_read, r.buyer_read)
-        AND r.id = m2.room_id
-        GROUP by r.id
-      ) AS chat_count,
-      (
-        SELECT m.content
-        FROM chatting_message m
-        WHERE m.room_id = r.id
-        ORDER BY m.id DESC
-        LIMIT 1
-      ) AS last_content,
-      (
-        SELECT DATE_FORMAT(m.created,'%Y-%m-%d %H:%i:%S')
-        FROM chatting_message m
-        WHERE m.room_id = r.id
-        ORDER BY m.id DESC
-        LIMIT 1
-      ) AS last_created
-    FROM 
-      chatting_room r, 
-      goods g
-    WHERE
-      (r.buyer_id = '${userId}' AND r.buyer_entrance > -1)
-      OR
-      (r.seller_id = '${userId}' AND r.seller_entrance > -1)
-    AND r.goods_id = g.id
-    GROUP BY r.id, g.thumbnail
-    ORDER BY last_created DESC;
-    `,
+    `SELECT distinct
+    r.id as room_id, 
+    ( SELECT g.thumbnail FROM goods g WHERE g.id = r.goods_id) as thumbnail,
+    (
+      SELECT IF(r2.buyer_id = '${userId}', r2.seller_id, r2.buyer_id)
+      FROM chatting_room r2
+      WHERE r2.id = r.id
+    ) AS partner_id,
+    (
+  SELECT count(distinct m2.id)
+      FROM chatting_message m2
+      WHERE m2.id > IF(r.seller_id = '${userId}', r.seller_read, r.buyer_read)
+      AND r.id = m2.room_id
+      GROUP by r.id
+    ) AS chat_count,
+    (
+      SELECT m.content
+      FROM chatting_message m
+      WHERE m.room_id = r.id
+      ORDER BY m.id DESC
+      LIMIT 1
+    ) AS last_content,
+    (
+      SELECT DATE_FORMAT(m.created,'%Y-%m-%d %H:%i:%S')
+      FROM chatting_message m
+      WHERE m.room_id = r.id
+      ORDER BY m.id DESC
+      LIMIT 1
+    ) AS last_created
+  FROM 
+    chatting_room r
+  WHERE
+    (r.buyer_id = '${userId}' AND r.buyer_entrance > -1)
+    OR
+    (r.seller_id = '${userId}' AND r.seller_entrance > -1)
+  GROUP BY room_id
+  ORDER BY last_created DESC;`
   );
   if (result) {
     return result;
