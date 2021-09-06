@@ -27,8 +27,10 @@ const MySQLStore = expressMysqlSession(session);
 
 dotenv.config();
 
+const bucket = process.env.BUCKET || 'wtc-2';
+
 const corsOption = {
-  origin: 'https://deal-13.s3.ap-northeast-2.amazonaws.com/',
+  origin: `https://${bucket}.s3.ap-northeast-2.amazonaws.com/`,
 };
 
 const app = express();

@@ -9,13 +9,15 @@ const __dirname = path.resolve();
 
 dotenv.config();
 
+const bucket = process.env.BUCKET || 'wtc-2';
+
 aws.config.loadFromPath(__dirname + '/src/config/awsconfig.json');
 const s3 = new aws.S3();
 
 const upload = multer({
   storage: multerS3({
     s3,
-    bucket: 'deal-13',
+    bucket,
     limits: { fileSize: 5 * 1024 * 1024 },
     key: function (req, file, cb) {
       cb(
