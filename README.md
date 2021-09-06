@@ -2,13 +2,16 @@
 
 ## 우아한테크캠프 4기 2~3주차 팀 13 - 윤민상, 고우혁
 
-## 배포 링크  https://www.youtube.com/watch?v=dLZbdbKF9hk&ab_channel=%28%ED%85%8C%ED%81%AC%EC%BA%A0%ED%94%84%29%EA%B3%A0%EC%9A%B0%ED%98%81
+## [배포 링크](https://wtc-2.wooluck.dev/)
 
-## 프로젝트 결과물 http://ec2-3-34-144-71.ap-northeast-2.compute.amazonaws.com/
+## [데모 영상](https://www.youtube.com/watch?v=dLZbdbKF9hk&ab_channel=%28%ED%85%8C%ED%81%AC%EC%BA%A0%ED%94%84%29%EA%B3%A0%EC%9A%B0%ED%98%81)
 
 ## 문서
+
 ### 1. [기본 규칙 📏](https://github.com/woowa-techcamp-2021/deal-13/wiki/Rule)
+
 ### 2. [컨벤션 🗒️](https://github.com/woowa-techcamp-2021/deal-13/wiki/%EC%BB%A8%EB%B2%A4%EC%85%98)
+
 ### 3. [회의록 📖](https://github.com/woowa-techcamp-2021/deal-13/wiki/%ED%9A%8C%EC%9D%98%EB%A1%9D)
 
 ## Author
@@ -28,6 +31,7 @@
 방이동 맛집 추천받아요!
 
 ### 취미
+
 - 커피
   - 핸드드립
   - 콜드브루
@@ -37,6 +41,7 @@
   - 1~2개월 마다?
 
 ---
+
 ![프로필](https://ca.slack-edge.com/T01B3TZ421W-U027806QXAQ-fa6a45f079cc-512)
 
 ## 윤민상
@@ -44,6 +49,6 @@
 안양에서 살고 있습니다!  
 안양이신분 같이 식사라도 한끼 하실까요?
 
-### 취미 
+### 취미
 
 - 헬스
